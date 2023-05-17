@@ -19,7 +19,6 @@ public class Subject {
     @GeneratedValue
     private Integer id;
     private String name;
-
-    @OneToMany(mappedBy = "subject")
-    private Collection<Project> project;
+    private String description;
+    private String photo;
 }

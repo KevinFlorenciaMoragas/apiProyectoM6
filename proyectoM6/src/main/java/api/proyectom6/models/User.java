@@ -24,6 +24,13 @@ public class User {
     private String name;
     @Column(unique = false)
     private String lastName;
-    @OneToMany (mappedBy = "user")
+    @Column(name ="photo")
+    private String photo;
+    @ManyToMany
+    @JoinTable(
+            name = "user_project",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
     private List<Project> project;
 }

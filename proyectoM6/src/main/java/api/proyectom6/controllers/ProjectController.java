@@ -20,7 +20,7 @@ public class ProjectController {
         return projectService.listProject();
     }
     @GetMapping("/project/{id}")
-    public ResponseEntity<Project> getProjectById(@RequestParam Integer id) {
+    public ResponseEntity<Project> getProjectById(@PathVariable Integer id) {
         try {
             Project project = projectService.findProjectById(id);
             return ResponseEntity.ok(project);

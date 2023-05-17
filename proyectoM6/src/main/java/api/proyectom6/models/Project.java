@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,10 +17,18 @@ public class Project {
     private Integer id;
     @Column(name = "name", unique = false)
     private String name;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-    @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
+    @Column(name = "description", unique = false)
+    private String description;
+    @Column(name = "photo", unique = false)
+    private String photo;
+    @Column(name = "link", unique = false)
+    private String link;
+    @ManyToMany
+    @JoinTable(
+            name = "subject_project",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id")
+    )
+    private List<Subject> subject;
+
 }
